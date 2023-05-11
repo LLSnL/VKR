@@ -7,8 +7,6 @@ import java.math.BigDecimal;
 
 public class DeviceDTO {
     private Integer id;
-    private DictionaryDevice dictionaryDevice;
-    private DepartmentOfSignalling departmentOfSignalling;
     private Integer numberOfUnits;
     private Integer numberOfPathsCoefficient;
     private BigDecimal expirationCoefficient;
@@ -21,21 +19,6 @@ public class DeviceDTO {
         this.id = id;
     }
 
-    public DictionaryDevice getDictionaryDevice() {
-        return dictionaryDevice;
-    }
-
-    public void setDictionaryDevice(DictionaryDevice dictionaryDevice) {
-        this.dictionaryDevice = dictionaryDevice;
-    }
-
-    public DepartmentOfSignalling getDepartmentOfSignalling() {
-        return departmentOfSignalling;
-    }
-
-    public void setDepartmentOfSignalling(DepartmentOfSignalling departmentOfSignalling) {
-        this.departmentOfSignalling = departmentOfSignalling;
-    }
 
     public Integer getNumberOfUnits() {
         return numberOfUnits;
@@ -66,8 +49,6 @@ public class DeviceDTO {
 
     public DeviceDTO(Integer id, DictionaryDevice dictionaryDevice, DepartmentOfSignalling departmentOfSignalling, Integer numberOfUnits, Integer numberOfPathsCoefficient, BigDecimal expirationCoefficient) {
         this.id = id;
-        this.dictionaryDevice = dictionaryDevice;
-        this.departmentOfSignalling = departmentOfSignalling;
         this.numberOfUnits = numberOfUnits;
         this.numberOfPathsCoefficient = numberOfPathsCoefficient;
         this.expirationCoefficient = expirationCoefficient;

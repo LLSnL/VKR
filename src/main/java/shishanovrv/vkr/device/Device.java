@@ -32,6 +32,17 @@ public class Device {
     @Column(name = "EXPIRATION_COEFFICIENT")
     private BigDecimal expirationCoefficient;
 
+    public Device(DictionaryDevice dictionaryDevice, DepartmentOfSignalling departmentOfSignalling, Integer numberOfUnits, Integer numberOfPathsCoefficient, BigDecimal expirationCoefficient) {
+        this.dictionaryDevice = dictionaryDevice;
+        this.departmentOfSignalling = departmentOfSignalling;
+        this.numberOfUnits = numberOfUnits;
+        this.numberOfPathsCoefficient = numberOfPathsCoefficient;
+        this.expirationCoefficient = expirationCoefficient;
+    }
+
+    public Device() {
+    }
+
     public Integer getId() {
         return id;
     }

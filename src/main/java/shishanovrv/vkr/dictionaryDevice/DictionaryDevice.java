@@ -23,8 +23,18 @@ public class DictionaryDevice {
     private Integer valueOfTechnicalUnitForThirdAndForthCategories;
     @Column(name = "VALUE_COEFFICIENT")
     private Integer valueCoefficient;
-    @OneToOne(mappedBy = "dictionaryDevice", fetch = FetchType.LAZY)
-    private Device device;
+
+    public DictionaryDevice(String name, Integer unitOfMeasurementSize, String unitOfMeasurementName, Integer valueOfTechnicalUnitForFirstAndSecondCategories, Integer valueOfTechnicalUnitForThirdAndForthCategories, Integer valueCoefficient) {
+        this.name = name;
+        this.unitOfMeasurementSize = unitOfMeasurementSize;
+        this.unitOfMeasurementName = unitOfMeasurementName;
+        this.valueOfTechnicalUnitForFirstAndSecondCategories = valueOfTechnicalUnitForFirstAndSecondCategories;
+        this.valueOfTechnicalUnitForThirdAndForthCategories = valueOfTechnicalUnitForThirdAndForthCategories;
+        this.valueCoefficient = valueCoefficient;
+    }
+
+    public DictionaryDevice() {
+    }
 
     public Integer getId() {
         return id;
@@ -82,14 +92,6 @@ public class DictionaryDevice {
         this.valueCoefficient = valueCoefficient;
     }
 
-    public Device getDevice() {
-        return device;
-    }
-
-    public void setDevice(Device device) {
-        this.device = device;
-    }
-
     @Override
     public String toString() {
         return "DictionaryDevice{" +
@@ -100,7 +102,6 @@ public class DictionaryDevice {
                 ", valueOfTechnicalUnitForFirstAndSecondCategories=" + valueOfTechnicalUnitForFirstAndSecondCategories +
                 ", valueOfTechnicalUnitForThirdAndForthCategories=" + valueOfTechnicalUnitForThirdAndForthCategories +
                 ", valueCoefficient=" + valueCoefficient +
-                ", deviceList=" + device +
                 '}';
     }
 
@@ -111,6 +112,5 @@ public class DictionaryDevice {
         valueOfTechnicalUnitForFirstAndSecondCategories = dictionaryDevice.getValueOfTechnicalUnitForFirstAndSecondCategories();
         valueOfTechnicalUnitForThirdAndForthCategories = dictionaryDevice.getValueOfTechnicalUnitForThirdAndForthCategories();
         valueCoefficient = dictionaryDevice.getValueCoefficient();
-        device = dictionaryDevice.getDevice();
     }
 }

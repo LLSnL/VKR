@@ -17,6 +17,14 @@ public class DepartmentOfSignalling {
     @OneToMany(mappedBy = "departmentOfSignalling", fetch = FetchType.LAZY)
     private List<Device> deviceList;
 
+    public DepartmentOfSignalling(String name, List<Device> deviceList) {
+        this.name = name;
+        this.deviceList = deviceList;
+    }
+
+    public DepartmentOfSignalling() {
+    }
+
     public Integer getId() {
         return id;
     }

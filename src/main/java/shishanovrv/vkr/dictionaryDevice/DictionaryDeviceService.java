@@ -29,4 +29,6 @@ public class DictionaryDeviceService {
     public void delete(int id) {
         deviceRepo.deleteById(id);
     }
+
+    public DictionaryDevice getById(int id){return deviceRepo.getReferenceById(id);}
 }
