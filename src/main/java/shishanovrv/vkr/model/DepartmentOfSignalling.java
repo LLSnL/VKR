@@ -1,7 +1,4 @@
-package shishanovrv.vkr.departmentOfSignalling;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import shishanovrv.vkr.device.Device;
+package shishanovrv.vkr.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +11,8 @@ public class DepartmentOfSignalling {
     private Integer id;
     @Column(name = "NAME")
     private String name;
-    @OneToMany(mappedBy = "departmentOfSignalling", fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "departmentOfSignalling", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Device> deviceList;
 
     public DepartmentOfSignalling(String name, List<Device> deviceList) {
@@ -58,8 +56,20 @@ public class DepartmentOfSignalling {
                 '}';
     }
 
-    public void copy(DepartmentOfSignalling departmentOfSignalling){
+    public void copy(DepartmentOfSignalling departmentOfSignalling) {
         name = departmentOfSignalling.getName();
         deviceList = departmentOfSignalling.getDeviceList();
+    }
+
+    public void addToList(Device device) {
+        this.deviceList.add(device);
+    }
+
+    public void removeFromList(Device device) {
+        this.deviceList.remove(device);
+    }
+
+    public void removeFromList() {
+        this.deviceList.remove(0);
     }
 }

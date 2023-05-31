@@ -1,15 +1,12 @@
-package shishanovrv.vkr.dictionaryDevice;
-
-import shishanovrv.vkr.device.Device;
+package shishanovrv.vkr.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "DICTIONARY_DEVICE")
 public class DictionaryDevice {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column(name = "NAME")
     private String name;

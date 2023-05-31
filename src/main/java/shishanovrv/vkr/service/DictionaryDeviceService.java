@@ -1,5 +1,6 @@
-package shishanovrv.vkr.dictionaryDevice;
+package shishanovrv.vkr.service;
 
+import shishanovrv.vkr.model.DictionaryDevice;
 import shishanovrv.vkr.repo.DictionaryDeviceRepo;
 
 import java.util.List;

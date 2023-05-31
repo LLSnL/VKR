@@ -1,11 +1,6 @@
-package shishanovrv.vkr.device;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import shishanovrv.vkr.departmentOfSignalling.DepartmentOfSignalling;
-import shishanovrv.vkr.dictionaryDevice.DictionaryDevice;
+package shishanovrv.vkr.model;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "DEVICE")
@@ -23,18 +18,24 @@ public class Device {
     @JoinColumn(name = "DOS_ID", referencedColumnName = "id")
     private DepartmentOfSignalling departmentOfSignalling;
 
+    @Column(name = "CATEGORY")
+    private Integer category;
+
     @Column(name = "NUMBER_OF_UNITS")
     private Integer numberOfUnits;
 
+    /*Записывается в коэффициент * 100*/
     @Column(name = "NUMBER_OF_PATHS_COEFFICIENT")
     private Integer numberOfPathsCoefficient;
 
+    /*Записывается в коэффициент * 100*/
     @Column(name = "EXPIRATION_COEFFICIENT")
-    private BigDecimal expirationCoefficient;
+    private Integer expirationCoefficient;
 
-    public Device(DictionaryDevice dictionaryDevice, DepartmentOfSignalling departmentOfSignalling, Integer numberOfUnits, Integer numberOfPathsCoefficient, BigDecimal expirationCoefficient) {
+    public Device(DictionaryDevice dictionaryDevice, DepartmentOfSignalling departmentOfSignalling, Integer category, Integer numberOfUnits, Integer numberOfPathsCoefficient, Integer expirationCoefficient) {
         this.dictionaryDevice = dictionaryDevice;
         this.departmentOfSignalling = departmentOfSignalling;
+        this.category = category;
         this.numberOfUnits = numberOfUnits;
         this.numberOfPathsCoefficient = numberOfPathsCoefficient;
         this.expirationCoefficient = expirationCoefficient;
@@ -83,12 +84,20 @@ public class Device {
         this.numberOfPathsCoefficient = numberOfPathsCoefficient;
     }
 
-    public BigDecimal getExpirationCoefficient() {
+    public Integer getExpirationCoefficient() {
         return expirationCoefficient;
     }
 
-    public void setExpirationCoefficient(BigDecimal expirationCoefficient) {
+    public void setExpirationCoefficient(Integer expirationCoefficient) {
         this.expirationCoefficient = expirationCoefficient;
+    }
+
+    public Integer getCategory() {
+        return category;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
     }
 
     @Override
@@ -97,6 +106,7 @@ public class Device {
                 "id=" + id +
                 ", dictionaryDevice=" + dictionaryDevice +
                 ", departmentOfSignalling=" + departmentOfSignalling +
+                ", category=" + category +
                 ", numberOfUnits=" + numberOfUnits +
                 ", numberOfPathsCoefficient=" + numberOfPathsCoefficient +
                 ", expirationCoefficient=" + expirationCoefficient +
@@ -104,6 +114,7 @@ public class Device {
     }
 
     public void copy(Device device){
+        category = device.getCategory();
         dictionaryDevice = device.getDictionaryDevice();
         departmentOfSignalling = device.getDepartmentOfSignalling();
         numberOfUnits = device.getNumberOfUnits();
